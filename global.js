@@ -18,6 +18,7 @@ function $$(selector, context = document) {
 //     currentLink.classList.add("current");
 // }
 
+console.log("Is it reaching here?");
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "/" : "/portfolio/";
 console.log(`The base path rn is: ${BASE_PATH}`);
 // All relevant pages and links
