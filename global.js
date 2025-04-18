@@ -19,14 +19,14 @@ function $$(selector, context = document) {
 // }
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "/" : "/portfolio/";
-
+console.log(`The base path rn is: ${BASE_PATH}`);
 // All relevant pages and links
 let pages = [
     {url: '', title: 'Home'},
     {url: 'resume/', title: 'Resume'},
     {url: 'projects/', title: 'Projects'},
     {url: 'contact/', title: 'Contact'},
-]
+];
 
 // Create a nav tag for the pages
 let nav = document.createElement('nav');
@@ -39,8 +39,10 @@ for (let p of pages) {
 
     if (!url.startsWith('http')) {
         url = BASE_PATH + url;
+        console.log(`url for ${title} is ${url}`);
     }
 
     nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
 
+ 
