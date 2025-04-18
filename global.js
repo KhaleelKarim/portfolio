@@ -17,3 +17,30 @@ function $$(selector, context = document) {
 // if (currentLink) {
 //     currentLink.classList.add("current");
 // }
+
+const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "/" : "/website/";
+
+// All relevant pages and links
+let pages = [
+    {url: '', title: 'Home'},
+    {url: 'resume/', title: 'Resume'},
+    {url: 'projects/', title: 'Projects'},
+    {url: 'contact/', title: 'Contact'},
+]
+
+// Create a nav tag for the pages
+let nav = document.createElement('nav');
+document.body.prepend(nav);
+
+// Add hyperlinks to the nav bar
+for (let p of pages) {
+    let url = p.url;
+    let title = p.title;
+
+    if (!url.startsWith('http')) {
+        url = BASE_PATH + url;
+    }
+
+    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+}
+
