@@ -47,8 +47,6 @@ for (let p of pages) {
     a.textContent = title;
     nav.append(a);
 
-    console.log(`a host is: ${a.host} and location host is: ${location.host}`)
-    console.log(`a pathname is: ${a.pathname} and location pathname is: ${location.pathname}`)
 
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add("current");
