@@ -18,9 +18,9 @@ function $$(selector, context = document) {
 //     currentLink.classList.add("current");
 // }
 
-console.log("Is it reaching here?");
+
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "/" : "/portfolio/";
-console.log(`The base path rn is: ${BASE_PATH}`);
+
 // All relevant pages and links
 let pages = [
     {url: '', title: 'Home'},
@@ -40,10 +40,18 @@ for (let p of pages) {
 
     if (!url.startsWith('http')) {
         url = BASE_PATH + url;
-        console.log(`url for ${title} is ${url}`);
     }
 
-    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+    let a = document.createElement("a")
+    a.href = url;
+    a.textContent = title;
+    nav.append(a);
+
+    if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add("current");
+    }
+
+
 }
 
  
