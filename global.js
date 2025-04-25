@@ -78,7 +78,6 @@ export async function fetchJSON(url) {
         if (!response.ok) {
             throw new Error(`Failed to fetch projects: ${response.statusText}`);
         }
-        console.log(response)
         const data = await response.json();
         return data;
 
@@ -87,4 +86,31 @@ export async function fetchJSON(url) {
     }
 }
 
-await fetchJSON(document.url);
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    // Check for empty projects
+    if (projects.length === 0) {
+        console.log("Empty projects list!")
+    }
+
+    // Make sure the div is found
+    if (!containerElement) {
+        console.log("Could not find projects div")
+    }
+
+    // Dynamically add information to the article element
+    containerElement.innerHTML = '';
+    for (let project of projects) {
+        const article = document.createElement('article');
+        article.innerHTML = `
+        <${headingLevel}>${project.title}</${headingLevel}>
+        <img src="${project.image}" alt="${project.title}">
+        <p>${project.description}</p>
+        `
+        containerElement.appendChild(article)
+    }
+    
+}
+
+const projects = await fetchJSON('../lib/projects.json');
+const projectsContainer = document.querySelector('.projects');
+renderProjects(projects, projectsContainer, 'h2');
