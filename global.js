@@ -5,20 +5,6 @@ function $$(selector, context = document) {
     return Array.from(context.querySelectorAll(selector));
 }
 
-// // All links in <a> tags within a <nav> tag
-// let navLinks = $$("nav a")
-
-// // Finds the link of the current page by checking host and path
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname
-// );
-
-// // Add current class to this link being careful to avoid an error
-// if (currentLink) {
-//     currentLink.classList.add("current");
-// }
-
-
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "/" : "/portfolio/";
 
 // All relevant pages and links
@@ -82,4 +68,23 @@ if (localStorage.colorScheme) {
     select.value = localStorage.colorScheme;
 }
 
- 
+// Getting JSON for my projects page
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+
+        // In case of a bad response
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+        console.log(response)
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+await fetchJSON(document.url);
