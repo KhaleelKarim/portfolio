@@ -111,7 +111,14 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
     // Change the title
     const projectTitle = document.querySelector(".projects-title")
-    projectTitle.innerHTML = `${projects.length} Projects`
+    if (projectTitle) {
+        projectTitle.innerHTML = `${projects.length} Projects`
+    }
     
+    
+}
+
+export async function fetchGithubData(username) {
+    return fetchJSON(`https://api.github.com/users/${username}`);
 }
 
