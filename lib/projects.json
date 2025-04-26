@@ -1,61 +1,73 @@
 [
     {
         "title": "Hackathon NLP Project",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque necessitatibus iure voluptate porro quisquam! Tempora nisi iste officia atque quas error officiis excepturi nostrum blanditiis, iusto at in, deserunt quam?"
     },
     {
-        "title": "Aut quas quasi incidunt!",
+        "title": "Recipe Data Analysis",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Quo, modi at commodi quibusdam ad, odit asperiores et laborum, qui quod ratione? Rem amet dolorum dignissimos accusamus earum iste provident ipsa repellat at, adipisci harum molestias corrupti porro? Veritatis."
     },
     {
-        "title": "Totam quam assumenda minima!",
+        "title": "Minecraft Mod: 'Bizarre Wizardry'",
+        "year": "2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Nam sapiente molestias minus quidem eveniet enim alias a vel, atque optio error perspiciatis eligendi esse quod quisquam consectetur, facere cum sequi cumque impedit, deserunt architecto beatae. Vero, magni rem?"
     },
     {
         "title": "Fugit optio ipsa pariatur.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Perferendis consequuntur ex ab omnis sapiente iure magni dolorem commodi molestias quam dolorum architecto laboriosam, inventore nobis deleniti neque incidunt quae eaque ullam recusandae voluptate quos non! Nobis, culpa tenetur!"
     },
     {
         "title": "Explicabo nobis esse animi!",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Incidunt a aperiam aliquid commodi, tempora officia nemo eligendi exercitationem eos consequatur repellendus eum adipisci, aut quibusdam harum sunt nesciunt dignissimos cum veritatis. Dolorum unde quaerat delectus, eos quia recusandae."
     },
     {
         "title": "Voluptatum obcaecati laborum consequuntur?",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Laborum culpa sapiente consequuntur molestiae eligendi, voluptate neque molestias eaque totam architecto incidunt, ipsa tempore. Nihil, repellendus laudantium odio dolores tenetur sit, omnis error quasi distinctio dolorum nostrum, quia at."
     },
     {
         "title": "Nihil odio nostrum sint!",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Accusantium similique iusto necessitatibus commodi aliquam possimus. Natus quae corrupti doloremque voluptatem maxime minus fugiat doloribus soluta pariatur dolorum. Voluptatem, at. Voluptates numquam rem unde sint nihil voluptatibus maiores dignissimos."
     },
     {
         "title": "Sequi quod nulla adipisci!",
+        "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Excepturi quis tempora tenetur ipsa? Rerum sed facilis, iure totam quia eius eveniet ex repellendus facere minima recusandae repudiandae doloremque. Deleniti officia provident tenetur similique nihil corrupti blanditiis quod pariatur!"
     },
     {
         "title": "Repellat enim illo dolor!",
+        "year": "2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Rem, explicabo quidem suscipit architecto rerum magni tenetur delectus sed sunt laudantium ut! Ipsa harum maiores odio exercitationem, ad at tempore nam, praesentium eos aliquam ipsum itaque ex sunt sit."
     },
     {
         "title": "Architecto inventore aperiam ipsum.",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Commodi voluptatibus a aut deserunt aspernatur? Illo veritatis nisi est commodi nihil voluptas iusto exercitationem quibusdam officiis quae, culpa labore assumenda quasi tenetur sunt. Quae deserunt perspiciatis recusandae quod deleniti!"
     },
     {
         "title": "Quam enim deleniti fugit!",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Dignissimos fugiat dolor quaerat ratione facilis velit voluptate molestias? Vel amet quod impedit error, possimus adipisci dolor veritatis cumque quidem suscipit accusamus ab! Quo sequi veniam nulla veritatis consequuntur sapiente?"
     },
     {
         "title": "Rem minima magni vero.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Eum repellat quae perspiciatis quasi provident sint id accusamus culpa animi dolores? Tempore molestias eligendi voluptate nobis numquam quidem quibusdam, tenetur, fuga eveniet, esse dolorem hic? Rem excepturi et veritatis."
     }

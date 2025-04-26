@@ -145,3 +145,27 @@ section.experience {
   border-bottom-style: solid;
   border-bottom-color: oklch(70% 13% 244);
 }
+
+
+article.profile-stats {
+  d1 {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+
+    dt {
+      display: grid;
+      grid-template-rows: subgrid;
+      gap: 1em;
+      grid-row: span 3;
+    }
+
+    dd {
+      display: grid;
+      grid-template-rows: subgrid;
+      gap: 1em;
+      grid-row: span 3;
+    }
+
+  }
+}
