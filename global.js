@@ -108,6 +108,10 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         `
         containerElement.appendChild(article)
     }
+
+    // Change the title
+    const projectTitle = document.querySelector(".projects-title")
+    projectTitle.innerHTML = `${projects.length} Projects`
     
 }
 
