@@ -14,6 +14,39 @@ body {
     padding-inline: 5ch;
   }
 
+#projects-plot {
+    max-width: 20em;
+    margin-block: 2em;
+  
+    overflow: visible;
+}
+
+.legend {
+  display: flex; /* Arrange items side by side */
+  gap: 20px; /* Add spacing between items */
+  list-style: none; /* Remove default bullet points */
+  padding: 10px; /* Add padding inside the rectangle */
+  margin: 0; /* Remove default margin */
+  margin-bottom: 20px;
+  border: 2px solid #ccc; /* Add a border around the rectangle */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  background-color: #f9f9f9; /* Set a light background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+.legend li {
+  display: flex; /* Align swatch and text horizontally */
+  align-items: center; /* Vertically center items */
+  gap: 5px; /* Add spacing between swatch and text */
+  padding: 5px;
+}
+.legend .swatch {
+  width: 15px; /* Set width of the swatch */
+  height: 15px; /* Set height of the swatch */
+  background-color: var(--color); /* Use the color set in the inline style */
+  border-radius: 50%; /* Make the swatch circular */
+  border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+}
+
 nav {
   display: flex;
   margin-bottom: 5ch;
@@ -99,6 +132,10 @@ div.projects {
       margin: 0;
     }
 
+  }
+
+  div.year {
+    font-variant-numeric: oldstyle-nums;
   }
 
 }

@@ -8,7 +8,6 @@ const projectsContainer = document.querySelector('.projects');
 renderProjects(latestProjects, projectsContainer, 'h2');
 const githubData = await fetchGithubData('KhaleelKarim');
 const profileStats = document.querySelector('.profile-stats');
-console.log(profileStats);
 if (profileStats) {
     profileStats.innerHTML = `
           <dl>
