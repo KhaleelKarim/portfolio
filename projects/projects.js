@@ -9,14 +9,18 @@ renderProjects(projects, projectsContainer, 'h2');
 // Make pie chart
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
-let data = [
-    { value: 1, label: 'apples' },
-    { value: 2, label: 'oranges' },
-    { value: 3, label: 'mangos' },
-    { value: 4, label: 'pears' },
-    { value: 5, label: 'limes' },
-    { value: 5, label: 'cherries' },
-];
+let projectsJSON = await fetchJSON('../lib/projects.json'); // fetch your project data
+let rolledData = d3.rollups(
+  projectsJSON,
+  (v) => v.length,
+  (d) => d.year,
+);
+
+console.log(rolledData)
+
+let data = rolledData.map(([year, count]) => {
+    return { value: count, label: year };
+});
 let sliceGenerator = d3.pie().value((d) => d.value);
 let arcData = sliceGenerator(data);
 let arcs = arcData.map((d) => arcGenerator(d));
@@ -35,4 +39,17 @@ data.forEach((d, idx) => {
     .append('li')
     .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
     .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
+});
+
+// Add search functionality
+let query = '';
+
+let searchInput = document.querySelector('.searchBar');
+
+searchInput.addEventListener('change', (event) => {
+  // update query value
+  query = event.target.value;
+  // TODO: filter the projects
+
+  // TODO: render updated projects!
 });

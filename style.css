@@ -21,24 +21,38 @@ body {
     overflow: visible;
 }
 
+div.container {
+  display: flex;
+  flex-direction: row; /* Stack the chart and legend vertically */
+  align-items: center; /* Center the content */
+  gap: 20px; /* Add spacing between the chart and legend */
+  max-width: 100%; /* Ensure the container doesn't overflow */
+  padding: 10px;
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
 .legend {
   display: flex; /* Arrange items side by side */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
   gap: 20px; /* Add spacing between items */
   list-style: none; /* Remove default bullet points */
   padding: 10px; /* Add padding inside the rectangle */
-  margin: 0; /* Remove default margin */
-  margin-bottom: 20px;
+  margin: 0 auto; /* Center the legend */
   border: 2px solid #ccc; /* Add a border around the rectangle */
   border-radius: 8px; /* Optional: Add rounded corners */
   background-color: #f9f9f9; /* Set a light background color */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  max-width: 100%; /* Ensure the legend doesn't overflow */
 }
+
 .legend li {
   display: flex; /* Align swatch and text horizontally */
   align-items: center; /* Vertically center items */
   gap: 5px; /* Add spacing between swatch and text */
   padding: 5px;
+  flex: 1 1 auto; /* Allow items to grow and shrink */
+  min-width: 150px; /* Set a minimum width for each item */
 }
+
 .legend .swatch {
   width: 15px; /* Set width of the swatch */
   height: 15px; /* Set height of the swatch */
