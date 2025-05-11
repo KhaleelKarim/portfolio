@@ -42,7 +42,167 @@ function processCommits(data) {
     });
 }
 
+function renderCommitInfo(data, commits) {
+  // Create the dl element
+  const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+
+  // Add total LOC
+  dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+  dl.append('dd').text(data.length);
+
+  // Add total commits
+  dl.append('dt').text('Total commits');
+  dl.append('dd').text(commits.length);
+
+  // Calculate average file length
+  const avgFileLength = d3.mean(data, (d) => d.length);
+  dl.append('dt').text('Average file length');
+  dl.append('dd').text(avgFileLength.toFixed(2)); // Display with 2 decimal places
+
+  // Calculate average line length
+  const avgLineLength = d3.mean(data, (d) => d.line);
+  dl.append('dt').text('Average line length');
+  dl.append('dd').text(avgLineLength.toFixed(2)); // Display with 2 decimal places
+
+  // Find the longest line
+  const longestLine = d3.max(data, (d) => d.line);
+  dl.append('dt').text('Longest line');
+  dl.append('dd').text(longestLine);
+}
+
+
+function updateTooltipVisibility(isVisible) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.hidden = !isVisible;
+}
+
+function updateTooltipPosition(event) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.style.left = `${event.clientX}px`;
+  tooltip.style.top = `${event.clientY}px`;
+}
+
+function renderScatterPlot(data, commits) {
+
+  // Put all the JS code of Steps inside this function
+
+    const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+
+    const width = 1000;
+    const height = 600;
+
+    const svg = d3
+    .select('#chart')
+    .append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .style('overflow', 'visible');
+
+    const xScale = d3
+    .scaleTime()
+    .domain(d3.extent(sortedCommits, (d) => d.datetime))
+    .range([0, width])
+    .nice();
+
+    const yScale = d3.scaleLinear().domain([0, 24]).range([height, 0]);
+
+    const dots = svg.append('g').attr('class', 'dots');
+
+    dots
+    .selectAll('circle')
+    .data(sortedCommits)
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', 5)
+    .attr('fill', 'steelblue');
+
+    
+
+    const margin = { top: 10, right: 10, bottom: 30, left: 20 };
+
+    const usableArea = {
+    top: margin.top,
+    right: width - margin.right,
+    bottom: height - margin.bottom,
+    left: margin.left,
+    width: width - margin.left - margin.right,
+    height: height - margin.top - margin.bottom,
+    };
+
+    // Add gridlines BEFORE the axes
+    const gridlines = svg
+        .append('g')
+        .attr('class', 'gridlines')
+        .attr('transform', `translate(${usableArea.left}, 0)`);
+
+    // Create gridlines as an axis with no labels and full-width ticks
+    gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+
+    // Update scales with new ranges
+    xScale.range([usableArea.left, usableArea.right]);
+    yScale.range([usableArea.bottom, usableArea.top]);
+
+        // Create the axes
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3
+    .axisLeft(yScale)
+    .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
+
+    // Add X axis
+    svg
+    .append('g')
+    .attr('transform', `translate(0, ${usableArea.bottom})`)
+    .call(xAxis);
+
+    // Add Y axis
+    svg
+    .append('g')
+    .attr('transform', `translate(${usableArea.left}, 0)`)
+    .call(yAxis);
+
+    const [minLines, maxLines] = d3.extent(sortedCommits, (d) => d.totalLines);
+    const rScale = d3
+    .scaleSqrt() // Change only this line
+    .domain([minLines, maxLines])
+    .range([6, 20]); 
+
+
+    dots
+    .selectAll('circle')
+    .data(sortedCommits)
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', 5)
+    .attr('fill', 'steelblue')
+    .attr('r', (d) => rScale(d.totalLines))
+    .style('fill-opacity', 0.7) // Add transparency for overlapping dots
+    .on('mouseenter', (event, commit) => {
+        renderTooltipContent(commit);
+        updateTooltipVisibility(true);
+        updateTooltipPosition(event);
+    })
+    .on('mouseleave', () => {
+        updateTooltipVisibility(false);
+    });
+
+}
+
 let data = await loadData();
 let commits = processCommits(data);
-console.log(commits);
 
+renderCommitInfo(data, commits);
+renderScatterPlot(data, commits);
+
+function renderTooltipContent(commit) {
+  const link = document.getElementById('commit-link');
+  const date = document.getElementById('commit-date');
+
+  if (Object.keys(commit).length === 0) return;
+
+  link.href = commit.url;
+  link.textContent = commit.id;
+  date.textContent = commit.datetime?.toLocaleString('en', {
+    dateStyle: 'full',
+  });
+}

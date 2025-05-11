@@ -243,3 +243,104 @@ article.profile-stats {
   stroke-width: 2px; /* Make the border thicker */
   opacity: 0.8; /* Slightly dim the other slices */
 }
+
+/* Style the stats container */
+#stats {
+  display: flex; /* Arrange items in a row */
+  flex-wrap: wrap; /* Allow wrapping if the content overflows */
+  gap: 20px; /* Add spacing between items */
+  padding: 10px; /* Add padding inside the container */
+  border: 1px solid #ccc; /* Optional: Add a border around the stats */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  background-color: #f9f9f9; /* Optional: Set a light background color */
+}
+
+/* Style the dl element */
+.stats {
+  display: flex; /* Arrange dt and dd in a row */
+  flex-direction: row; /* Ensure dt and dd are side by side */
+  align-items: center; /* Align items vertically */
+  gap: 5px; /* Add spacing between dt and dd */
+  margin: 0; /* Remove default margin */
+}
+
+/* Style dt (labels) */
+.stats dt {
+  font-weight: bold; /* Make labels bold */
+  margin-right: 5px; /* Add spacing after the label */
+}
+
+/* Style dd (values) */
+.stats dd {
+  margin: 0; /* Remove default margin */
+}
+
+.gridlines line {
+  stroke: #ccc; /* Light gray color for the gridlines */
+  stroke-width: 1; /* Thin gridlines */
+  opacity: 0.7; /* Make the gridlines semi-transparent */
+}
+
+.gridlines path {
+  display: none; /* Hide the axis path if unnecessary */
+}
+
+/* Style the dl.info element with a grid layout */
+dl.info {
+  display: grid; /* Use grid layout */
+  grid-template-columns: auto 1fr; /* First column for <dt>, second column for <dd> */
+  gap: 0.5em 1em; /* Add spacing between rows and columns */
+  margin: 0; /* Remove default margins */
+  padding: 1em; /* Add padding inside the element */
+  border: 1px solid #ccc; /* Optional: Add a border */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  background-color: #f9f9f9; /* Optional: Light background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+}
+
+/* Style the <dt> elements to make labels less prominent */
+dl.info dt {
+  font-weight: bold; /* Make labels bold */
+  color: #666; /* Use a less prominent color for labels */
+  text-align: right; /* Align labels to the right */
+}
+
+/* Style the <dd> elements to make values stand out */
+dl.info dd {
+  margin: 0; /* Remove default margins */
+  color: #000; /* Use a prominent color for values */
+}
+
+/* Style the .tooltip element */
+.tooltip {
+  position: fixed; /* Fix the tooltip to the viewport */
+  top: 3em; /* Position it 1em from the top of the viewport */
+  left: 1em; /* Position it 1em from the left of the viewport */
+  z-index: 1000; /* Ensure it appears above other elements */
+  padding: 1em; /* Add padding inside the tooltip */
+  border: 1px solid #ccc; /* Optional: Add a border */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  background-color: #fff; /* Optional: White background for better visibility */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+}
+
+dl.info {
+  /* ... other styles ... */
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
