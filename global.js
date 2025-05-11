@@ -13,6 +13,7 @@ let pages = [
     {url: 'resume/', title: 'Resume'},
     {url: 'projects/', title: 'Projects'},
     {url: 'contact/', title: 'Contact'},
+    {url: 'meta/', title: 'Meta'},
 ];
 
 // Create a nav tag for the pages
