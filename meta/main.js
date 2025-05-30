@@ -289,3 +289,24 @@ function renderTooltipContent(commit) {
     dateStyle: 'full',
   });
 }
+
+// Onto lab 8 stuff
+let commitProgress = 100;
+
+let timeScale = d3
+  .scaleTime()
+  .domain([
+    d3.min(commits, (d) => d.datetime),
+    d3.max(commits, (d) => d.datetime),
+  ])
+  .range([0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+
+const slider = document.getElementById('commit-progress');
+const timeElem = document.getElementById('commit-time');
+
+slider.addEventListener('input', (event) => {
+  commitProgress = +event.target.value;
+  commitMaxTime = timeScale.invert(commitProgress);
+  timeElem.textContent = commitMaxTime.toLocaleString();
+});
