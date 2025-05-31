@@ -43,7 +43,8 @@ function processCommits(data) {
       });
 
       return ret;
-    });
+    })
+    .sort((a, b) => a.datetime - b.datetime); // Sort by datetime
 }
 
 function renderLanguageBreakdown(selection) {
@@ -439,6 +440,9 @@ d3.select('#scatter-story')
 
 function onStepEnter(response) {
   console.log(response.element.__data__.datetime);
+  let scrolled_date = response.element.__data__.datetime
+  filteredCommits = commits.filter((d) => d.datetime <= scrolled_date);
+  updateScatterPlot(data, filteredCommits)
 }
 
 const scroller = scrollama();
