@@ -12,16 +12,20 @@
 
     <p>Including code stats for this website</p>
 
-    <label> Showing commits until:
-        <input id="commit-progress" type="range" min="0" max="100">
-        <time id="commit-time"></time>
-    </label>
+    
+
+    
 
     <div id="stats" class="stats"></div>
 
+    
 
     <h2>Commits by time of day</h2>
-    <div id="chart">
+
+    <div id="scrolly-1">
+    <div id="scatter-story">some filler text here</div>
+    <div id="scatter-plot">
+        <div id="chart">
         <dl id="commit-tooltip" class="info tooltip" hidden>
         <dt>Commit</dt>
         <dd>
@@ -34,12 +38,21 @@
         <!-- Add: Time, author, lines edited -->
         </dl>
     </div>
+    </div>
+    </div>
+
+    <label> Showing commits until:
+        <input id="commit-progress" type="range" min="0" max="100">
+        <time id="commit-time"></time>
+    </label>
 
     <p id="selection-count">No commits selected</p>
 
     <dl id="language-breakdown" class="stats"></dl>
 
-
+    <dl id="files">
+       
+    </dl>
 
 </head>
 <body>
